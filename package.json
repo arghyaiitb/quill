@@ -1,6 +1,6 @@
 {
-  "name": "quill",
-  "version": "2.0.0-dev.3",
+  "name": "unofficial-quill-v2-release",
+  "version": "0.0.1",
   "description": "Your powerful, rich text editor",
   "author": "Jason Chen <jhchen7@gmail.com>",
   "homepage": "http://quilljs.com",
@@ -115,7 +115,6 @@
         "error",
         {
           "devDependencies": [
-            "_develop/*.js",
             "test/**/*.js"
           ]
         }
@@ -148,14 +147,15 @@
     "build": "npm run lint && npm run build:webpack",
     "build:webpack": "webpack --config _develop/webpack.config.js; rm dist/quill.core dist/quill.bubble dist/quill.snow",
     "build:release": "./_develop/scripts/release.sh",
-    "lint": "eslint blots core formats modules themes ui test",
+    "lint": "eslint blots core formats modules themes ui",
     "start": "npm run build:webpack; bundle exec foreman start -f _develop/procfile",
     "test": "npm run test:unit",
     "test:all": "npm run test:unit; npm run test:functional",
     "test:functional": "./_develop/scripts/puppeteer.sh",
     "test:unit": "npm run build; karma start _develop/karma.config.js",
     "test:coverage": "webpack --env.coverage --config _develop/webpack.config.js; karma start _develop/karma.config.js --reporters coverage",
-    "travis": "npm run lint && karma start _develop/karma.config.js --reporters dots,saucelabs"
+    "travis": "npm run lint && karma start _develop/karma.config.js --reporters dots,saucelabs",
+    "prepare": "npm run build"
   },
   "keywords": [
     "editor",
